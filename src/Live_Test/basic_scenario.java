@@ -69,9 +69,8 @@ public  class basic_scenario extends Regression {
 	public static   void open_links() throws Exception
 	{
 
-
-		Systemlog();
-		Thread.sleep(2000);
+		//currentimeErrorlog();
+		//Thread.sleep(2000);
 		clickon_Bedrijfs_beheer(); 
 		Thread.sleep(2000);
 		clickon_Companydetails();
@@ -89,37 +88,7 @@ public  class basic_scenario extends Regression {
 
 	}
 
-	public static  void Systemlog() throws Exception 
-	{
-		//System Log
-		driver.get(baseUrl + "SystemLog.aspx");
-		Thread.sleep(2000);
-		ObtainDate.currenttime();
-		Select drpCountry = new Select(driver.findElement(By.id("ctl00_cphContent_ddLogLevel")));
-		drpCountry.selectByValue("9");
-
-
-		logger.info("Chrome browser:-> " + "Systemlog >> error selected");
-		driver.findElement(By.xpath ("//*[@id='ctl00_cphContent_ibSearch']")).click();
-		Thread.sleep(2000);
-		String s = driver.findElement(By.xpath("/html//form[@id='aspnetForm']//table[@class='PageContent']//td[@class='ContentPageHeader']/div/div/div/div[2]/table[@class='MasterTable_SO']/tbody/tr[1]/td")).getText();  
-		//System.out.println(s);
-
-		//String str = "Navigeer pagina: << Eerste < Vorige 12345 ... Volgende > Laatste >> | Pagina 1 van 12 | Items 1 tot 50 van 561";
-		String[] line = s.split(">>");
-		String part1 = line[1];
-		// System.out.println("part1: -> " + part1);
-		String[] line2 = s.split("van");
-		String part2 = line2[1];
-		String part3 = line2[2];
-		System.out.println("Total Number of error:- > " + part3);
-		logger.info("Total Number of error:- > " + part3);
-		// System.out.println("part2: -> " + part2 + part3);
-		String[] line3= part2.split(" ");
-		String part4 = line3[1];
-		System.out.println("Number of Error pages: -> " + part4);
-		logger.info("Number of Error pages: -> " + part4);
-	}	
+	
 
 	public static  void currentimeErrorlog() throws Exception 
 	{
